@@ -1,9 +1,7 @@
 from pecan import expose, redirect
 from webob.exc import status_map
 
-
 class RootController(object):
-
     @expose(generic=True, template='index.html')
     def index(self):
         return dict()
@@ -20,3 +18,11 @@ class RootController(object):
             status = 500
         message = getattr(status_map.get(status), 'explanation', '')
         return dict(status=status, message=message)
+
+    @expose('json')
+    def safety(self, *args):
+        return {"url": args[0], "safety": 50}
+
+    @expose('json')
+    def related(self, *args):
+        return {"url": args[0], "url_num":2, "related_urls": ["url1", "url2"]}
