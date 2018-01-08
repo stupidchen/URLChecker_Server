@@ -1,5 +1,6 @@
 from pecan import expose, redirect
 from webob.exc import status_map
+from checker.controllers.json import JSONController
 
 class RootController(object):
     @expose(generic=True, template='index.html')
@@ -19,10 +20,5 @@ class RootController(object):
         message = getattr(status_map.get(status), 'explanation', '')
         return dict(status=status, message=message)
 
-    @expose('json')
-    def safety(self, *args):
-        return {"url": args[0], "safety": 50}
+    json = JSONController()
 
-    @expose('json')
-    def related(self, *args):
-        return {"url": args[0], "url_num":2, "related_urls": ["url1", "url2"]}

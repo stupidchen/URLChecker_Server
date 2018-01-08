@@ -9,5 +9,5 @@ except ImportError:
 setup(
     setup_requires=['pbr'],
     pbr=True,
-    test_suite='server.test'
+    test_suite='checker.test'
 )

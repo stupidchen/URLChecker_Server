@@ -1,6 +1,6 @@
 from unittest import TestCase
 from webtest import TestApp
-from server.tests import FunctionalTest
+from checker.tests import FunctionalTest
 
 
 class TestRootController(FunctionalTest):

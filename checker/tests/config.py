@@ -6,8 +6,8 @@ server = {
 
 # Pecan Application Configurations
 app = {
-    'root': 'server.controllers.root.RootController',
-    'modules': ['server'],
+    'root': 'checker.controllers.root.RootController',
+    'modules': ['checker'],
     'static_root': '%(confdir)s/../../public',
     'template_path': '%(confdir)s/../templates',
     'debug': True,

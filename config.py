@@ -6,10 +6,10 @@ server = {
 
 # Pecan Application Configurations
 app = {
-    'root': 'server.controllers.root.RootController',
-    'modules': ['server'],
+    'root': 'checker.controllers.root.RootController',
+    'modules': ['checker'],
     'static_root': '%(confdir)s/public',
-    'template_path': '%(confdir)s/server/templates',
+    'template_path': '%(confdir)s/checker/templates',
     'debug': True,
     'errors': {
         404: '/error/404',
@@ -20,7 +20,7 @@ app = {
 logging = {
     'root': {'level': 'INFO', 'handlers': ['console']},
     'loggers': {
-        'server': {'level': 'DEBUG', 'handlers': ['console'], 'propagate': False},
+        'checker': {'level': 'DEBUG', 'handlers': ['console'], 'propagate': False},
         'pecan': {'level': 'DEBUG', 'handlers': ['console'], 'propagate': False},
         'py.warnings': {'handlers': ['console']},
         '__force_dict__': True
@@ -52,3 +52,9 @@ logging = {
 #
 # All configurations are accessible at::
 # pecan.conf
+
+# URL Checker Configurations
+checker = {
+    'crawler': '%(confdir)s/cmd/crawler.py',
+    'model': '%(confdir)s/cmd/model.py'
+}
