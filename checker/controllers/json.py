@@ -1,10 +1,26 @@
 from pecan import expose
+from checker.driver.crawler import CrawlerDriver
+from checker.driver.model import ModelDriver
+
 
 class JSONController(object):
     @expose('json')
     def safety(self, *args):
-        return {"url": args[0], "safety": 50}
+        url = args[0]
+        ret = ModelDriver().query(url)
+
+        return {
+            "url": url,
+            "safety": ret
+        }
 
     @expose('json')
     def related(self, *args):
-        return {"url": args[0], "layer": args[1], "url_num":2, "related_urls": ["url1", "url2"]}
+        url = args[0]
+        layer = args[1]
+
+        ret = CrawlerDriver.query_related_url(url, layer)
+
+        return {
+            "graph": ret
+        }
