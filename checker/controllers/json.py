@@ -19,7 +19,7 @@ class JSONController(object):
         url = args[0]
         layer = args[1]
 
-        ret = CrawlerDriver.query_related_url(url, layer)
+        ret = CrawlerDriver().query_related_url(url, layer)
 
         return {
             "graph": ret

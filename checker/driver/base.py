@@ -4,8 +4,10 @@ import sys
 
 class BaseDriver(object):
     def __init__(self, config_name='base'):
+        """FIXME - The logic of getting config is not correct"""
         config = conf.to_dict().get(config_name)
 
+        print(config)
         dir = config.dir
         if dir is None:
             return

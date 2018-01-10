@@ -1,6 +1,21 @@
 CHANGES
 =======
 
+0.0.6
+-----
+
+* Optimized: Improve the framework included the crawler driver and json controller
+
+0.0.5
+-----
+
+* Renamed server to checker and added driver and spider library Grab
+
+0.0.3
+-----
+
+* Updated RootController
+
 0.0.2
 -----
 
