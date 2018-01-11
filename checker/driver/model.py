@@ -6,5 +6,5 @@ class ModelDriver(BaseDriver):
         BaseDriver.__init__(self, 'model')
 
     def query(self, url):
-        ret = getattr(self.driver_class, self.method)(url)
+        ret = getattr(self.mod, 'query')(url)
         return ret

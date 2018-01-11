@@ -65,10 +65,12 @@ class SimpleGrabSpider():
 
             h += 1
 
-        return q, founded
+        ret = map(lambda x: x.__dict__, q)
+        return ret
+
 
 
 if __name__ == '__main__':
     g = SimpleGrabSpider()
-    res, founded = g.grab('http://docs.grablib.org/en/latest/grab/response_search.html', 2)
-    print(founded)
+    res = g.grab('http://docs.grablib.org/en/latest/grab/response_search.html', 2)
+    print(res)

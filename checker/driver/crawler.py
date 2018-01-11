@@ -5,6 +5,6 @@ class CrawlerDriver(BaseDriver):
     def __init__(self):
         BaseDriver.__init__(self, 'crawler')
 
-    def query_related_url(self, url, layer):
-        ret = getattr(self.driver_class, self.method)(url, layer)
+    def query_related_domain(self, url, layer):
+        ret = getattr(self.mod, 'multi_grab')(url, layer)
         return ret

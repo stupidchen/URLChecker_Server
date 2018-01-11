@@ -55,6 +55,7 @@ logging = {
 
 # URL Checker Configurations
 checker = {
-    'crawler': '%(confdir)s/cmd/grab_crawler.py',
-    'model': '%(confdir)s/cmd/model.py'
+    'cmd_dir': '%(confdir)s/checker/cmd/',
+    'crawler': 'grab_crawler',
+    'model': 'model'
 }
