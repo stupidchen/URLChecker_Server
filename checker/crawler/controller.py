@@ -72,5 +72,5 @@ class SimpleGrabSpider():
 
 if __name__ == '__main__':
     g = SimpleGrabSpider()
-    res = g.grab('http://docs.grablib.org/en/latest/grab/response_search.html', 2)
+    res = g.grab('http://www.baidu.com', 1)
     print(res)

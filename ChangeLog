@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.1.0
+-----
+
+* Bugfixed: Correct the logic of getting checker configuration
+
 0.0.8
 -----
 

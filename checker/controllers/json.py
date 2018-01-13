@@ -1,11 +1,13 @@
 from pecan import expose
 from checker.driver.crawler import CrawlerDriver
 from checker.driver.model import ModelDriver
+import logging
+import traceback
 
 
 class JSONController(object):
     @expose('json')
-    def safety(self, *args):
+    def safety(self, *args, **kwargs):
         url = args[0]
         ret = ModelDriver().query(url)
 
@@ -15,12 +17,18 @@ class JSONController(object):
         }
 
     @expose('json')
-    def related(self, *args):
-        url = args[0]
-        layer = args[1]
+    def related(self, *args, **kwargs):
+        logging.info(kwargs)
+        url = kwargs.get('url')
+        layer = int(kwargs.get('layer'))
 
-        ret = CrawlerDriver().query_related_domain(url, layer)
+        try:
+            ret = CrawlerDriver().query_related_domain(url, layer)
+        except Exception as e:
+            logging.error(e)
+            traceback.print_exc(logging._srcfile)
 
         return {
-            "graph": ret
+            "data": ret,
+            "error": 0
         }
