@@ -13,10 +13,26 @@ function query(formData) {
 }
 
 
+function append_https(url) {
+    if (url.startsWith('http'))
+        return url;
+    return 'https://' + url;
+}
+
 function init_report(response) {
     $('#report-url').text('Safety of ' + response.root.url + ': ');
     init_graph(response.data);
     init_safety(response.root);
+
+    jump_url = append_https(response.root.url);
+
+    // FIXME - Check the logic
+    if (response.root.safety >= 75)
+        $('#report-jump').attr('href', jump_url);
+    else {
+        $('#confirm-confirm-btn').attr('href', jump_url);
+        $('#report-jump').attr('href', '#confirm-dialog');
+    }
     $('#report').modal('show');
 }
 
@@ -29,19 +45,42 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-function get_rgb(min, max, v) {
+function rgbToColorStr(r, g, b) {
+    reducedRed = r / 128;
+    reducedGreen = g / 128;
+    reducedBlue = b / 128;
+    reducedColor = reducedBlue + reducedGreen * 2 + reducedRed * 4;
+    switch (reducedColor) {
+       case 0: return "black"; break;
+       case 1: return "blue"; break;
+       case 2: return "green"; break;
+       case 3: return "cyan"; break;
+       case 4: return "red"; break;
+       case 5: return "purple"; break;
+       case 6: return "yellow"; break;
+       case 7: return "white"; break;
+    }
+    return "black";
+}
+
+function get_rgb(min, max, v, str) {
     ratio = 2 * (v - min) / (max - min);
     b = Math.max(0, Math.floor(255 * (1 - ratio)));
     r = Math.max(0, Math.floor(255 * (ratio - 1)));
     g = 255 - b - r;
-    return rgbToHex(r, g, b);
+    if (!str)
+        return rgbToHex(r, g, b);
+    else
+        return rgbToColorStr(r, g, b);
 }
 
 function init_safety(root) {
     var target = root.safety;
-    var color = get_rgb(0, 100, target)
+    var color = get_rgb(0, 100, target, true)
 
     var percent_number_step = $.animateNumber.numberStepFactories.append(' %')
+
+    // FIXME - Abnormal animation color
     $('#report-safety').animateNumber(
       {
         number: target,
@@ -52,7 +91,7 @@ function init_safety(root) {
 
         numberStep: percent_number_step
       },
-      'slow'
+      20000
     );
 }
 

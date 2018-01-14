@@ -84,12 +84,13 @@
                     <div class="modal-body">
                         <p id="report-url">
                         </p>
-                        <p>
-                            <span id="report-safety" style="color: black;">0 %</span>
-                        </p>
+                        <span id="report-safety" style="color: black;">0 %</span>
                         <canvas id="report-graph" width="800" height="400">
                             Sorry, your browser doesn't support the &lt;canvas&gt; element.
                         </canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="report-jump" class="btn btn-success" href="#confirm-dialog" data-toggle="modal">GO</a>
                     </div>
                </div>
             </div>
@@ -117,6 +118,31 @@
         </div>
         <button id="notice-show-btn" type="button" data-toggle="modal" data-target="#notice-dialog" aria-hidden="true">
         </button>
+
+        <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="confirm-title" aria-hidden="true">
+            <div class="modal-dialog" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" id="close-confirm" type="button" data-dismiss="modal" aria-label="close">
+                            <span>&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="confirm-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="confirm-msg">The url is unsafe. Confirm to visit? </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-danger" id="confirm-confirm-btn" href="#" data-dismiss="modal">Confirm</a>
+                        <a class="btn btn-default" id="confirm-cancel-btn" href="#" data-dismiss="modal">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="confirm-show-btn" type="button" data-toggle="modal" data-target="#confirm-dialog" aria-hidden="true">
+        </button>
+
+
 
         <script type="text/javascript" src="/javascript/common.js"></script>
         <script type="text/javascript" src="/javascript/index.js"></script>
