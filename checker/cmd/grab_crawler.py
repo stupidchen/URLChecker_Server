@@ -2,6 +2,7 @@ from checker.crawler.controller import SimpleGrabSpider
 
 spider = SimpleGrabSpider()
 
+
 def simple_grab(url):
     return spider.grab(url, 1)
 

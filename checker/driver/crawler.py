@@ -1,11 +1,11 @@
-from checker.driver.base import HasMod
+from checker.driver.base import getMod
 
 
-class CrawlerDriver(HasMod):
+class CrawlerDriver():
+    mod = getMod('checker', 'crawler')
 
     def __init__(self):
-        self.mod = None
-        self.getMod( 'checker', 'crawler')
+        pass
 
     def query_related_domain(self, url, layer):
         ret = getattr(self.mod, 'multi_grab')(url, layer)

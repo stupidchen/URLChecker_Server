@@ -8,12 +8,13 @@ class Node():
         self.u = url
         self.f = parent
         self.d = depth
+        self.t = 0
 
 
 class SimpleGrabSpider():
     def __init__(self, *args):
         self.href_regx = '(?<=href=\").*?(?=\")|(?<=href=\').*?(?=\')'
-        self.timeout = 2
+        self.timeout = 10
         pass
 
     def get_related_url(self, url):
@@ -43,13 +44,13 @@ class SimpleGrabSpider():
         return list(set(domains))
 
     def grab(self, url, layer):
-        t = tldextract.extract(url)
-        domain = t.registered_domain
+        domain = tldextract.extract(url).registered_domain
         if len(domain) == 0:
             return []
 
         q = [Node(domain, None, 0)]
         founded = [domain]
+        times = [1]
         h = 0
         t = 1
         while h < t:
@@ -60,14 +61,17 @@ class SimpleGrabSpider():
             for u in c:
                 if u not in founded:
                     founded.append(u)
+                    times.append(1)
                     t += 1
                     q.append(Node(u, h, q[h].d + 1))
+                else:
+                    times[founded.index(u)] += 1
 
             h += 1
 
-        ret = map(lambda x: x.__dict__, q)
-        return ret
-
+        for node in q:
+            node.t = times[founded.index(node.u)]
+        return q
 
 
 if __name__ == '__main__':

@@ -20,16 +20,19 @@
         <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <!-- Springy.js -->
+        <!-- Springy -->
         <script type="text/javascript" src="/javascript/springy.js"></script>
         <script type="text/javascript" src="/javascript/springyui.js"></script>
+
+        <!-- jQuery.animateNumber -->
+        <script type="text/javascript" src="/javascript/jquery.animateNumber.min.js"></script>
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
         <!-- Favicon -->
-        <link rel="icon" href="favicon.ico">
-    </head>
+        <link rel="icon" href="/images/favicon.ico">
+   </head>
 
     <body>
         <header>
@@ -64,9 +67,56 @@
             </div>
 
             <div class="row">
-                <canvas id="graph" />
             </div>
         </div>
+
+
+        <div class="modal fade" id="report" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" id="closereg" type="button" data-dismiss="modal" aria-label="close">
+                            <span>&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title">Safety Report</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="report-url">
+                        </p>
+                        <p>
+                            <span id="report-safety" style="color: black;">0 %</span>
+                        </p>
+                        <canvas id="report-graph" width="800" height="400">
+                            Sorry, your browser doesn't support the &lt;canvas&gt; element.
+                        </canvas>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="notice-dialog" tabindex="-1" role="dialog" aria-labelledby="notice-title" aria-hidden="true">
+            <div class="modal-dialog" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" id="close-notice" type="button" data-dismiss="modal" aria-label="close">
+                            <span>&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="notice-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="notice-msg"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-default" id="notice-ok-btn" href="#" data-dismiss="modal">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="notice-show-btn" type="button" data-toggle="modal" data-target="#notice-dialog" aria-hidden="true">
+        </button>
 
         <script type="text/javascript" src="/javascript/common.js"></script>
         <script type="text/javascript" src="/javascript/index.js"></script>
