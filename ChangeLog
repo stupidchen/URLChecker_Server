@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.2.8
+-----
+
+* Optimized: Add confirm dialog to index and fix the animation bug incompletely
+
 0.2.5
 -----
 

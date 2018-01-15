@@ -26,12 +26,17 @@ function init_report(response) {
 
     jump_url = append_https(response.root.url);
 
-    // FIXME - Check the logic
-    if (response.root.safety >= 75)
-        $('#report-jump').attr('href', jump_url);
+    jump_fun = function (event) {
+        event.preventDefault();
+        window.location.href = jump_url;
+    }
+
+    if (response.root.safety >= 75) {
+        $('#report-jump').removeAttr('data-toggle');
+        $('#report-jump').click(jump_fun);
+    }
     else {
-        $('#confirm-confirm-btn').attr('href', jump_url);
-        $('#report-jump').attr('href', '#confirm-dialog');
+        $('#confirm-confirm-btn').click(jump_fun);
     }
     $('#report').modal('show');
 }
