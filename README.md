@@ -12,6 +12,7 @@ Based on:
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [Springy](https://github.com/dhotson/springy/)
 - [jquery-animateNumber](https://github.com/aishek/jquery-animateNumber)
+- [bootstrap-waitingfor](https://github.com/ehpc/bootstrap-waitingfor)
 
 ### Back-end
 

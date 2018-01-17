@@ -2,11 +2,14 @@ function query(formData) {
     var url = formData.url;
     var layer = 2;
     var params = '?url=' + url + '&layer=' + layer;
+    waitingDialog.show('Generating report', {progressType: 'success'});
     ajax('GET', '/json/query' + params, {}, true, function (response) {
         if (response.error == 0) {
             init_report(response);
+            waitingDialog.hide();
         }
         else {
+            waitingDialog.hide();
             showNoticeDialog('Failed', 'Query failed!' + response.errorMsg);
         }
     });

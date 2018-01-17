@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.2.9
+-----
+
+* Bugfixed: Correct the jumping logic of confirm dialog
+
 0.2.8
 -----
 
