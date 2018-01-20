@@ -23,7 +23,7 @@ function append_https(url) {
 }
 
 function init_report(response) {
-    $('#report-url').text('Safety of ' + response.root.url + ': ');
+    $('#report-title').text('Safety Report: ' + response.root.url)
     init_graph(response.data);
     init_safety(response.root);
 
@@ -84,22 +84,21 @@ function get_rgb(min, max, v, str) {
 
 function init_safety(root) {
     var target = root.safety;
-    var color = get_rgb(0, 100, target, true)
+    if (target >= 75)
+        color = 'green'
+    else
+        color = 'red'
 
     var percent_number_step = $.animateNumber.numberStepFactories.append(' %')
-
-    // FIXME - Abnormal animation color
     $('#report-safety').animateNumber(
       {
         number: target,
         color: color,
         'font-size': '30px',
-
         easing: 'easeInQuad',
-
         numberStep: percent_number_step
       },
-      20000
+      15000
     );
 }
 
