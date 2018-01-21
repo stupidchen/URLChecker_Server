@@ -18,8 +18,8 @@ class SimpleGrabSpider():
         pass
 
     def get_related_url(self, url):
-        g = Grab(timeout=self.timeout)
         try:
+            g = Grab(timeout=self.timeout)
             resp = g.go(url).body
             urls = re.findall(self.href_regx, resp)
         except:
