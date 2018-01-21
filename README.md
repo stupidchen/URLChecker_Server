@@ -33,5 +33,6 @@ p.s. You can change checker/cmd/model.py to add your own model.
     
 ## Run
 
-    $ pecan serve config.py
+    $ pip install gunicorn
+    $ gunicorn_pecan config.py
 

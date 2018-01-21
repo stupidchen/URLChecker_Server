@@ -14,7 +14,7 @@ class Node():
 class SimpleGrabSpider():
     def __init__(self, *args):
         self.href_regx = '(?<=href=\").*?(?=\")|(?<=href=\').*?(?=\')'
-        self.timeout = 10
+        self.timeout = 1
         pass
 
     def get_related_url(self, url):
