@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pecan serve config.py
+gunicorn_pecan config.py
